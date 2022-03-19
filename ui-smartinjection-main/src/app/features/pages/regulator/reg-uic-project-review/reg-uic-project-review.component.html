@@ -1,0 +1,51 @@
+<a mat-button href="reg/dashboard">Back to the Dashboard</a>
+<div>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                {{ projectData.state.data.projectName }}
+            </mat-card-title>
+            <mat-card-subtitle>
+                <div>
+                    <strong>ID</strong><em> {{ projectId }} </em>
+                </div>
+
+                <div>
+                    <strong>UIC Project Number</strong><em> {{ projectData.state.data.UICProjectNumber }}</em>
+                </div>
+
+                <div>
+                    <strong>Status</strong><em> {{ projectData.state.data.status }}</em>
+                </div>
+                Inputting data needs to go in order.
+                <br>
+                Make sure to click the submit button when inputting well data.
+            </mat-card-subtitle>
+        </mat-card-header>
+
+        <h1>Wells in Project</h1>
+        <div *ngIf="!pendingShow">
+            <expanding-table [data]="wellData" [col]="wellCol" [wellTable]="true"></expanding-table>
+        </div>
+        <div *ngIf="pendingShow">
+            <mat-card-content>
+                <expanding-table 
+                [data]="wellData" 
+                [col]="wellCol" 
+                [regTable]="true"
+                (regPassedData)="recieveRegData($event)"></expanding-table>
+            </mat-card-content>
+        </div>
+        <div *ngIf="pendingShow">
+        <div id="button-left-right">
+            <button mat-flat-button color="warn" (click)="deny()">Deny</button>
+            <button mat-flat-button color="accent" (click)="approve()">Approve</button>
+        </div>
+        </div>
+    </mat-card>
+</div>
+
+<br>
+<div *ngIf="pendingShow">
+    <mat-card>Result: {{result}} </mat-card>
+</div>

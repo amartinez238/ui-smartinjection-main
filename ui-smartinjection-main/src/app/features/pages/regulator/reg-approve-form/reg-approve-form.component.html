@@ -1,0 +1,57 @@
+<!-- <form [formGroup]="regForm" (ngSubmit)="submitForm()">
+    <div formArrayName="regForms" *ngFor="let reg of regForms.controls; let i=index">
+        <div [formGroupName]="i" class="form">
+            <mat-form-field>
+                <mat-label>API Number</mat-label>
+                <input matInput formControlName="apis">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Updates</mat-label>
+                <input matInput formControlName="updates">
+            </mat-form-field>
+
+
+            <mat-form-field>
+                <mat-label>Permits</mat-label>
+                <input matInput formControlName="permits">
+            </mat-form-field>
+
+
+            <mat-form-field>
+                <mat-label>Permit Expiration</mat-label>
+                <input matInput placeholder="YYYY-MM-DD" formControlName="permitExp">
+            </mat-form-field>
+        </div>
+    </div>
+    <button mat-button type="submit">Submit</button>
+</form> -->
+
+<form [formGroup]="regForm" (ngSubmit)="submitForm()">
+    <div>
+        <div class="fields">
+            <mat-form-field>
+                <mat-label>API Number</mat-label>
+                <input matInput formControlName="apis">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Updates</mat-label>
+                <input matInput formControlName="updates">
+            </mat-form-field>
+
+
+            <mat-form-field>
+                <mat-label>Permits</mat-label>
+                <input matInput formControlName="permits">
+            </mat-form-field>
+
+
+            <mat-form-field>
+                <mat-label>Permit Expiration</mat-label>
+                <input matInput placeholder="YYYY-MM-DD" formControlName="permitExp">
+            </mat-form-field>
+            <button mat-button type="submit">Submit</button>
+        </div>
+    </div>
+</form>

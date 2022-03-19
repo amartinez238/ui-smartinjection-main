@@ -1,0 +1,12 @@
+<a mat-button href="wo/dashboard">Back to the Dashboard</a>
+<h1>My Wells</h1>
+
+<overview-table 
+[col]="displayedColumns"
+[data]="tableData"
+></overview-table>
+
+<br>
+<button mat-flat-button color="accent"
+routerLink="/wo/create-well">
+Create New Well</button>

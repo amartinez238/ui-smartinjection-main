@@ -1,0 +1,23 @@
+<div style="padding: 1.5em">
+  <div>
+    <mat-card class="projects-card">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>edit</mat-icon>
+        <mat-card-title>Projects Management</mat-card-title>
+        <mat-card-subtitle>Choose an option to manage your projects.</mat-card-subtitle>
+      </mat-card-header>
+      <!-- <mat-card-actions>
+        <div fxLayout="column" fxLayoutGap="10px">
+          <a mat-raised-button color="accent" href="/reg/project-review">PROJECT REVIEW</a>
+          <button mat-raised-button color="primary" routerLink="/reg/approved-project">APPROVED PROJECTS</button>
+        </div>
+      </mat-card-actions> -->
+      
+      <overview-table [data]="tableData" [col]="passedCol"></overview-table>
+
+    </mat-card>
+  </div>
+  
+  <br>
+  
+</div>

@@ -1,0 +1,529 @@
+<h1>Create Well</h1>
+<div class="container">
+  <mat-card>
+    <form [formGroup]="wellForm" (ngSubmit)="submitWell()">
+      <div formArrayName="wells" *ngFor="let well of wells.controls; let i=index;">
+        <div [formGroupName]="i">
+          <h2>Well Detail</h2>
+          
+          <mat-form-field>
+            <mat-label>Full Well Name</mat-label>
+            <input matInput formControlName="wellName">
+          </mat-form-field>
+          
+          <br>
+
+          <mat-form-field>
+            <mat-label>API ID</mat-label>
+            <input matInput formControlName="apiID">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Well Designation **</mat-label>
+            <input matInput formControlName="designation">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Well Number **</mat-label>
+            <input matInput formControlName="wellNum">
+          </mat-form-field>
+
+          <br>
+
+          <mat-form-field>
+            <mat-label>Operator Type</mat-label>
+            <input matInput formControlName="opType">
+          </mat-form-field>
+          
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Field **</mat-label>
+            <input matInput formControlName="field">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Lease</mat-label>
+            <input matInput formControlName="lease">
+          </mat-form-field>
+
+          <br>
+
+          <mat-form-field>
+            <mat-label>Well Status</mat-label>
+            <select matNativeControl formControlName="status">
+              <option value="active">Active</option>
+              <option value="idle">Idle</option>
+              <option value="inactive">Inactive</option>
+              <option value="plugged">Plugged</option>
+              <option value="abandoned">Abandoned</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Well Status Date **</mat-label>
+            <input matInput placeholder="YYYY-MM-DD" formControlName="statusDate">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Well Type</mat-label>
+            <select matNativeControl formControlName="wellType">
+              <option value="oil">Oil</option>
+              <option value="gas">Gas</option>
+              <option value="waterDisposal">Water Disposal</option>
+              <option value="waterInjector">Water Injector</option>
+              <option value="steamInjector">Steam Injector</option>
+              <option value="gasInjector">Gas Injector</option>              
+              <option value="other">other</option>
+            </select>
+          </mat-form-field>
+
+          <br>
+
+          <mat-form-field>
+            <mat-label>Well Spud Date **</mat-label>
+            <input matInput placeholder="YYYY-MM-DD" formControlName="spudDate">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Active Permit **</mat-label>
+            <select matNativeControl formControlName="permit">
+              <option value="permitYes">Yes</option>
+              <option value="permitNo">No</option>
+            </select>
+          </mat-form-field>
+          
+          <br>
+
+          <mat-form-field>
+            <mat-label>Pool **</mat-label>
+            <input matInput formControlName="pool">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Bond Number **</mat-label>
+            <input matInput formControlName="bondNum">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Initial Date of Production **</mat-label>
+            <input matInput placeholder="YYYY-MM-DD" formControlName="production">
+          </mat-form-field>
+
+          <br>
+
+          <mat-form-field>
+            <mat-label>Directionally Drilled **</mat-label>
+            <select matNativeControl formControlName="directDrill">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Confidential Well? **</mat-label>
+            <select matNativeControl formControlName="confidential">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </mat-form-field>    
+          
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Confidentiality Expiration Date **</mat-label>
+            <input matInput placeholder="YYYY-MM-DD" formControlName="expiration">
+          </mat-form-field>
+          <br><br>
+<hr>
+          <h2>Location Data (NAD 83 Teal Albers Projection) </h2>
+
+          <mat-form-field>
+            <mat-label>Section</mat-label>
+            <input matInput formControlName="sec">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Township</mat-label>
+            <input matInput formControlName="township">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Range</mat-label>
+            <input matInput formControlName="range">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>B&M **</mat-label>
+            <input matInput formControlName="bm">
+          </mat-form-field>
+
+          <br>
+          
+          <mat-form-field>
+            <mat-label> Surface Latitude (NAD 83) ****</mat-label>
+            <input matInput formControlName="surfLatitude">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Surface Longitude (NAD 83) ****</mat-label>
+            <input matInput formControlName="surfLongitude">
+          </mat-form-field>
+
+          <br>
+          
+          <mat-form-field>
+            <mat-label> Bottom Hole Latitude (NAD 83) ****</mat-label>
+            <input matInput formControlName="botLatitude">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Bottom Hole Longitude (NAD 83) ****</mat-label>
+            <input matInput formControlName="botLongitude">
+          </mat-form-field>
+
+          <br>
+
+          <mat-form-field>
+            <mat-label>County</mat-label>
+            <input matInput formControlName="county">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>District **</mat-label>
+            <input matInput formControlName="district">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Onshore/Offshore ****</mat-label>
+            <select matNativeControl formControlName="shore">
+              <option value="onshore">Onshore</option>
+              <option value="offshore">Offshore</option>
+            </select>
+          </mat-form-field>
+
+          <br>
+
+          <mat-form-field>
+            <mat-label>Depth Datum **</mat-label>
+            <input matInput formControlName="datum">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Corner Call **</mat-label>
+            <input matInput formControlName="coernerCall">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Location Description **</mat-label>
+            <input matInput formControlName="description">
+          </mat-form-field>
+<hr>
+
+          <h2>Casing Program</h2>
+          <mat-form-field>
+            <mat-label>Casing size ***</mat-label>
+            <input matInput formControlName="casingSize">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Weight ***</mat-label>
+            <input matInput formControlName="weight">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Grade & Type ***</mat-label>
+            <input matInput formControlName="grade">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Top ***</mat-label>
+            <input matInput formControlName="top">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Bottom ***</mat-label>
+            <input matInput formControlName="bottom">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Cement Depth ***</mat-label>
+            <input matInput formControlName="cementDepth">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Calc. fill behind CSG ***</mat-label>
+            <input matInput formControlName="coernerCall">
+          </mat-form-field>
+<hr>
+          <h2>Tests</h2>
+          <mat-form-field>
+            <mat-label>Test ID ***</mat-label>
+            <input matInput formControlName="testID">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Test Type ***</mat-label>
+            <input matInput formControlName="testType">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Test Interval (Months) ***</mat-label>
+            <input matInput formControlName="interval">
+          </mat-form-field>
+
+          <br>
+          
+          <mat-form-field>
+            <mat-label>Scheduled Date ***</mat-label>
+            <input matInput placeholder="YYYY-MM-DD" formControlName="schedDate">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Actual Date ***</mat-label>
+            <input matInput placeholder="YYYY-MM-DD" formControlName="actDate">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Future Scheduled Date ***</mat-label>
+            <input matInput placeholder="YYYY-MM-DD" formControlName="futureDate">
+          </mat-form-field>
+
+          <br>
+
+          <mat-form-field>  
+            <ngx-mat-file-input placeholder="Test Result(s)" formControlName="attachment"></ngx-mat-file-input>
+            <mat-icon matSuffix>folder</mat-icon>***
+          </mat-form-field>
+<hr>
+          <h2>Wellbore Information</h2>
+          <mat-form-field>
+            <mat-label>Wellbore No. ***</mat-label>
+            <input matInput formControlName="wellboreNo">
+          </mat-form-field>
+          &nbsp;&nbsp;
+          <mat-form-field>
+            <mat-label>Completion Date ***</mat-label>
+            <input matInput placeholder="YYYY-MM-DD" formControlName="compDate">
+          </mat-form-field>
+          &nbsp;&nbsp;
+          <mat-form-field>
+            <mat-label>Bottom Hole(MD) ***</mat-label>
+            <input matInput formControlName="botHoleMD">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Base of Fresh Water ***</mat-label>
+            <input matInput formControlName="waterBase">
+          </mat-form-field>
+          &nbsp;&nbsp;
+          <mat-form-field>
+            <mat-label>Bottom Hole (TVD) ***</mat-label>
+            <input matInput formControlName="botHoleTVD">
+          </mat-form-field>
+
+          <br>
+          
+          <mat-form-field>
+            <mat-label>Plugback Depth (MD) ***</mat-label>
+            <input matInput formControlName="plugMD">
+          </mat-form-field>
+          &nbsp;&nbsp;
+          <mat-form-field>
+            <mat-label>Plugback Depth (TVD) ***</mat-label>
+            <input matInput formControlName="plugTVD">
+          </mat-form-field>
+
+          <br>
+          <mat-form-field>
+            <mat-label>Bridge Plug ***</mat-label>
+            <input matInput formControlName="bridgePlug">
+          </mat-form-field>
+          &nbsp;&nbsp;
+          <mat-form-field>
+            <mat-label>Cement Plug ***</mat-label>
+            <input matInput formControlName="cementPlug">
+          </mat-form-field>
+
+          <br><br><br><br><br><br><br><br>
+  <!--         
+          <mat-form-field>
+            <mat-label>Purpose</mat-label>
+            <select matNativeControl formControlName="purpose">
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+            </select>
+          </mat-form-field>
+
+          <br>
+ 
+
+
+          <br>
+
+          <mat-form-field>
+            <mat-label>Injection zone</mat-label>
+            <input matInput formControlName="injZone">
+          </mat-form-field>
+
+          <br>
+
+
+
+          &nbsp;&nbsp;
+
+          <mat-form-field>
+            <mat-label>Sec</mat-label>
+            <input matInput formControlName="sec">
+          </mat-form-field>
+
+          &nbsp;&nbsp;
+
+
+
+          &nbsp;&nbsp;
+
+
+
+          &nbsp;&nbsp;
+
+
+
+          <br>
+
+          <mat-form-field>
+            <ngx-mat-file-input placeholder="Attach wellbore diagram" formControlName="attachment"></ngx-mat-file-input>
+            <mat-icon matSuffix>folder</mat-icon>
+          </mat-form-field>
+
+          <br>
+
+          <mat-form-field>
+            <mat-label>Location Type</mat-label>
+            <select matNativeControl formControlName="locationType">
+              <option value="NAD27">NAD27</option>
+            </select>
+          </mat-form-field>
+
+          <br>
+
+          <div formGroupName="location">
+            <fieldset style="width: 10%">
+              <label>Location</label>
+
+              <br>
+
+              <mat-form-field>
+                <mat-label>X</mat-label>
+                <input matInput formControlName="x">
+              </mat-form-field>
+
+              <br>
+
+              <mat-form-field>
+                <mat-label>Y</mat-label>
+                <input matInput formControlName="y">
+              </mat-form-field>
+
+              <br>
+
+              <mat-form-field>
+                <mat-label>Z</mat-label>
+                <input matInput formControlName="z">
+              </mat-form-field>
+            </fieldset>
+
+            <br>
+
+          </div>
+          <mat-form-field>
+            <ngx-mat-file-input placeholder="Attach production/Injection" formControlName="attachment"></ngx-mat-file-input>
+            <mat-icon matSuffix>folder</mat-icon>
+          </mat-form-field>
+-->
+          &nbsp;&nbsp;
+
+
+
+        </div>
+      </div>
+
+      <br>
+
+      <button mat-stroked-button type="submit">Submit Well</button>
+    </form>
+
+  </mat-card>
+
+  <br>
+
+  <mat-card>
+    Result:
+    <p>
+      {{ result }}
+    </p>
+  </mat-card>
+</div>

@@ -1,0 +1,41 @@
+<div class="wo-overall">
+  <div fxLayout="row" fxLayoutAlign="space-between-center" fxLayoutGap="10px">
+    <mat-card class="projects-card">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>edit</mat-icon>
+        <mat-card-title>Projects Management
+        </mat-card-title>
+        <mat-card-subtitle>Choose an option to manage your projects.</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions>
+        <div fxLayout="column" fxLayoutGap="10px">
+          <a mat-raised-button color="accent" href="/wo/new-project">CREATE NEW PROJECT</a>
+          <button mat-raised-button color="primary" routerLink="/wo/pending-project">PENDING PROJECTS</button>
+          <!-- <a mat-raised-button color="primary" href="/wo/unapproved-project">UNAPPROVED PROJECTS (TESTING)</a> -->
+        </div>
+      </mat-card-actions>
+    </mat-card>
+    <mat-card class="wells-card">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>star</mat-icon>
+        <mat-card-title>Wells Management</mat-card-title>
+        <mat-card-subtitle>Choose an option to manage your wells.</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions>
+        <div fxLayout="column" fxLayoutGap="10px">
+          <a mat-raised-button href="/wo/create-well" color="accent">CREATE NEW WELL</a>
+          <a mat-raised-button href="/wo/my-wells" color="primary">MY WELLS</a>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  
+  <br>
+  
+  <mat-card>
+    <div class="table">
+      <h1>My UIC Projects</h1>
+      <overview-table [data]="tableData" [col]="passedCol"></overview-table>
+    </div>
+  </mat-card>
+</div>

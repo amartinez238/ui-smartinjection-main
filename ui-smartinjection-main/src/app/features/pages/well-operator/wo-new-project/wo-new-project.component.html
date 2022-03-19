@@ -1,0 +1,87 @@
+<div>
+  <button mat-button routerLink="/wo/dashboard" routerLinkActive="active">Back to the Dashboard</button>
+  <!-- <button mat-button (click)="dashButton()">Test Dash</button> -->
+  <mat-horizontal-stepper>
+    <!-- Step 1 -->
+    <!-- Bugs: Currently <mat-form-field> is not function properly-->
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup" (ngSubmit)="createNewProject()">
+        <ng-template matStepLabel>New project's name</ng-template>
+        <div>
+            <mat-form-field>
+              <mat-label>Enter a new project's name</mat-label>
+              <br>
+              <input matInput placeholder="Ex. NP" formControlName="projectName">
+            </mat-form-field>
+            <br>
+            <button mat-button matStepperNext type="submit">Next Step</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!-- Step 2-->
+    <!-- Need to add Flex-layout -->
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Add wells</ng-template>
+        <div>
+          <mat-card>
+            Project Name: {{ firstFormGroup.value.projectName }}
+          </mat-card>
+
+          <!-- SELECTION TABLE/ADD WELL TABLE -->
+          <mat-card class="add-remove-table">
+            <mat-card-content>
+              <selection-table
+              [col]="selectPassedCol"
+              [data]="tableData"
+              (testOutput)="updateWellList($event)"
+              ></selection-table>
+            </mat-card-content>
+          </mat-card>
+
+          <!-- OVERVIEW TABLE // Updates with selected wells -->
+          <mat-card>
+            <overview-table [col]="stepTwoCol" [data]="wellTable"></overview-table>
+          </mat-card>
+        </div>
+      </form>
+      <br>
+      <button mat-button matStepperPrevious>Previous</button>
+      <button mat-button matStepperNext>Next Step</button>
+    </mat-step>
+
+    <!-- Step 3 -->
+    <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Review Project</ng-template>
+        <div>
+          <mat-card>Project Name: {{ firstFormGroup.value.projectName }} </mat-card>
+        </div>
+        <mat-card>
+          <expanding-table
+          [data]="wellTable"
+          [col]="stepThreeCol"
+          [wellTable]="true"></expanding-table>
+        </mat-card>
+      </form>
+      <br>
+      <button mat-button matStepperPrevious>Previous</button>
+      <button mat-button (click)="saveDraftBtn()" (click)="draft()">Save Draft</button>
+      <button mat-button (click)="saveDraftBtn()" matStepperNext>Next Step</button>
+    </mat-step>
+
+    <!-- Step 4 -->
+    <mat-step>
+      <ng-template matStepLabel>Confirmation</ng-template>
+      <div>
+        Please make sure that everything in the project is correct.
+        <br>
+        Once the project is submitted you will not be able to change this data.
+      </div>
+      <br>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="submitBttn()">Submit</button>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
